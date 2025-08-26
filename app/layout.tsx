@@ -1,23 +1,17 @@
-import type { Metadata } from "next";
-import { Geist } from "next/font/google";
-import { ThemeProvider } from "next-themes";
+
+import { Nunito } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
 
-const defaultUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "http://localhost:3000";
-
-export const metadata: Metadata = {
-  metadataBase: new URL(defaultUrl),
-  title: "Next.js and Supabase Starter Kit",
-  description: "The fastest way to build apps with Next.js and Supabase",
-};
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const geistSans = Nunito({
+  variable: "--font-nunito-sans",
   display: "swap",
   subsets: ["latin"],
 });
+
+export const metadata = {
+  title: "Tour Provider Dashboard",
+}
 
 export default function RootLayout({
   children,
@@ -26,15 +20,24 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${geistSans.className} antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+      <body className={`${geistSans.className} antialiased px-40  min-w-[1600px]`}>
+        <nav className="py-10">
+          <ul className="flex items-center space-x-6 text-md font-bold">
+            <li className="text-4xl mr-auto font-extrabold">
+              <Link href="/">Ventures</Link>
+            </li>
+            <li>
+              <Link href="/">My dashboard</Link>
+            </li>
+            <li>
+              <Link href="/tours">My tours</Link>
+            </li>
+            <li>
+              <Link href="/tours/create">Create a new tour</Link>
+            </li>
+          </ul>
+        </nav>
           {children}
-        </ThemeProvider>
       </body>
     </html>
   );
