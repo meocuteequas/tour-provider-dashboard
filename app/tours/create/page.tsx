@@ -1,14 +1,6 @@
-import { redirect } from "next/navigation";
-import { createClient } from "@/lib/supabase/server";
 import CreateTourWizard from "./wizard";
 
 export default async function CreateTourPage() {
-  const supabase = await createClient();
-
-  const { data, error } = await supabase.auth.getClaims();
-  if (error || !data?.claims) {
-    redirect("/auth/login");
-  }
 
   return (
     <main>
