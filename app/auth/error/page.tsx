@@ -19,11 +19,11 @@ export default async function Page({
             </CardHeader>
             <CardContent>
               {params?.error ? (
-                <p className="text-sm text-muted-foreground">
+                <p className="text-base text-muted-foreground">
                   Code error: {params.error}
                 </p>
               ) : (
-                <p className="text-sm text-muted-foreground">
+                <p className="text-base text-muted-foreground">
                   An unspecified error occurred.
                 </p>
               )}
