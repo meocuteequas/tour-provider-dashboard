@@ -21,11 +21,9 @@ type Props = {
 
 export default function ColorPicker({
   disabled = false,
-  stopCloseOnClickSelf = true,
   color,
   onChange,
   icon,
-  label,
   ...rest
 }: Props) {
   return (
